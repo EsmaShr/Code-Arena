@@ -3,9 +3,20 @@ var bodyParser = require('body-parser')
 const express = require("express");
 const app = express(); // making express app 
 const path = require("path");
-
+const mongoose = require('mongoose');
 const { Pool } = require('pg');
 
+const MONGO_URI =
+    'mongodb+srv://Jiajiajiayou:lijiaxin123@cluster0.9wwmn.mongodb.net/<dbname>?retryWrites=true&w=majority';
+
+mongoose
+    .connect(MONGO_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        dbName: 'coderena',
+    })
+    .then(() => console.log('Connected to Mongo DB.'))
+    .catch((err) => console.log(err));
 
 
 const pool = new Pool({
